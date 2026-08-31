@@ -38,14 +38,14 @@ export default function LandingPage({ onLaunch }) {
         loop
         muted
         playsInline
-        className="fixed inset-0 z-0 w-full h-[100vh] object-cover pointer-events-none"
+        className="fixed top-0 left-0 z-0 w-screen h-screen object-cover pointer-events-none"
         style={{ filter: "contrast(1.1) saturate(1.2)" }}
       >
         <source src="/tanker_bg.mp4" type="video/mp4" />
       </video>
 
       {/* Dark Overlay for Text Readability */}
-      <div className="fixed inset-0 z-0 h-[100vh] w-full bg-slate-900/40 pointer-events-none" />
+      <div className="fixed top-0 left-0 z-0 h-screen w-screen bg-slate-900/40 pointer-events-none" />
 
       {/* Scroll Animated Line Background */}
       <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden flex justify-center">

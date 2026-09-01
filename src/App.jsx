@@ -11,6 +11,8 @@ import ReportModal from './components/ReportModal';
 import LiveAisModal from './components/LiveAisModal';
 import TrajectoryRecorderModal from './components/TrajectoryRecorderModal';
 import LandingPage from './components/LandingPage';
+import { Toaster, toast } from 'react-hot-toast';
+import { motion, AnimatePresence } from 'framer-motion';
 
 import { PRESET_SCENARIOS } from './data/presetScenarios';
 import { characterizeOilSlick } from './engine/sarSegmentation';
@@ -72,6 +74,39 @@ export default function App() {
     setOilOpticCode(activeScenario.opticCode || 4);
   }, [selectedScenarioId, activeScenario]);
 
+  // Mock live incoming satellite alerts for hackathon WOW factor
+  useEffect(() => {
+    if (showLanding) return; // Don't show toast on landing page
+    
+    // Initial welcome toast
+    setTimeout(() => {
+      toast.success("Command Center Initialized", {
+        style: { background: '#1f2937', color: '#10b981', border: '1px solid #047857' }
+      });
+    }, 1000);
+
+    const interval = setInterval(() => {
+      const messages = [
+        "🛰️ Sentinel-1B overhead pass scheduled in 14 mins.",
+        "🚨 High Confidence Oil Spill Detected near region.",
+        "⚠️ AIS Anomaly: Suspicious tanker speed drop.",
+        "📡 Ocean current telemetry updated from local buoy.",
+        "🔍 ML Pipeline completed SAR segmentation."
+      ];
+      const randomMsg = messages[Math.floor(Math.random() * messages.length)];
+      toast(randomMsg, {
+        duration: 4000,
+        style: {
+          background: '#1f2937',
+          color: '#f9fafb',
+          border: '1px solid #374151',
+          boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)'
+        }
+      });
+    }, 20000); // every 20 seconds
+    return () => clearInterval(interval);
+  }, [showLanding]);
+
   // Toggle Real-Time AIS WebSocket Streaming
   const handleToggleAisStream = () => {
     if (isAisStreaming) {
@@ -90,8 +125,15 @@ export default function App() {
         (err) => console.error('Live AIS Stream Error:', err)
       );
 
-      // Connect with bounding box [[-40, 20], [30, 120]]
-      stream.connect([[[-40.0, 20.0], [30.0, 120.0]]]);
+      // Connect with bounding box based on current scenario coordinates (+/- 5 degrees)
+      const centerLat = activeScenario.slickPolygon[0][0];
+      const centerLng = activeScenario.slickPolygon[0][1];
+      const boundingBox = [[
+        [centerLat - 5.0, centerLng - 5.0],
+        [centerLat + 5.0, centerLng + 5.0]
+      ]];
+      
+      stream.connect(boundingBox);
       aisStreamRef.current = stream;
       setIsAisStreaming(true);
     }
@@ -204,8 +246,10 @@ export default function App() {
 
   return (
     <div className="w-screen h-screen flex flex-col bg-[#F3F4F6] text-slate-800 overflow-hidden font-sans">
+      <Toaster position="top-right" toastOptions={{ className: 'font-mono text-sm shadow-xl border' }} />
       {/* Navbar */}
       <Navbar
+        onBackToLanding={() => setShowLanding(true)}
         scenarios={PRESET_SCENARIOS}
         selectedScenarioId={selectedScenarioId}
         onSelectScenario={(id) => {
@@ -270,22 +314,39 @@ export default function App() {
 
         {/* Right Sidebar Control Panels */}
         <aside className="w-full lg:w-96 bg-white/90 backdrop-blur-md border-l border-slate-200 p-4 space-y-4 overflow-y-auto z-20 hidden md:block">
-          {/* Live Marine Weather Card */}
-          <MarineWeatherCard
-            slickCentroid={slickData.centroid}
-            onSyncToPhysics={handleSyncWeatherToPhysics}
-          />
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={selectedScenarioId}
+              initial="hidden"
+              animate="visible"
+              exit="hidden"
+              variants={{
+                visible: { transition: { staggerChildren: 0.1 } },
+                hidden: { transition: { staggerChildren: 0.05 } }
+              }}
+              className="space-y-4"
+            >
+              <motion.div variants={{ hidden: { opacity: 0, x: 50 }, visible: { opacity: 1, x: 0, transition: { type: "spring", stiffness: 300, damping: 24 } } }}>
+                <MarineWeatherCard
+                  slickCentroid={slickData.centroid}
+                  onSyncToPhysics={handleSyncWeatherToPhysics}
+                />
+              </motion.div>
 
-          {/* Slick Details Card */}
-          <SlickDetailsCard slickData={slickData} scenarioName={activeScenario.title} />
+              <motion.div variants={{ hidden: { opacity: 0, x: 50 }, visible: { opacity: 1, x: 0, transition: { type: "spring", stiffness: 300, damping: 24 } } }}>
+                <SlickDetailsCard slickData={slickData} scenarioName={activeScenario.title} />
+              </motion.div>
 
-          {/* Suspect Vessels Leaderboard */}
-          <SuspectVesselsList
-            rankedVessels={rankedVessels}
-            selectedVesselId={selectedVesselId}
-            onSelectVessel={setSelectedVesselId}
-            onInspectVessel={(vessel) => setVesselForModal(vessel)}
-          />
+              <motion.div variants={{ hidden: { opacity: 0, x: 50 }, visible: { opacity: 1, x: 0, transition: { type: "spring", stiffness: 300, damping: 24 } } }}>
+                <SuspectVesselsList
+                  rankedVessels={rankedVessels}
+                  selectedVesselId={selectedVesselId}
+                  onSelectVessel={setSelectedVesselId}
+                  onInspectVessel={(vessel) => setVesselForModal(vessel)}
+                />
+              </motion.div>
+            </motion.div>
+          </AnimatePresence>
         </aside>
       </div>
 

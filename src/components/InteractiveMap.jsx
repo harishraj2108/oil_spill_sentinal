@@ -156,7 +156,7 @@ export default function InteractiveMap({
       slickPoly.bindPopup(`
         <div class="p-2 font-sans text-xs">
           <div class="font-bold text-sky-700 uppercase tracking-wide">Sentinel-1 SAR Slick Detection</div>
-          <div class="mt-1 text-slate-800"><b>Area:</b> ${slickData.areaKm2} km²</div>
+          <div class="mt-1 text-slate-800"><b>Area:</b> ${(slickData.areaKm2 * 0.291553).toFixed(3)} nm²</div>
           <div class="text-slate-800"><b>Volume:</b> ${slickData.volumeM3} m³ (${slickData.volumeBarrels} bbls)</div>
           <div class="text-slate-800"><b>Class:</b> ${slickData.oilType}</div>
           <div class="text-slate-800"><b>Damping:</b> ${slickData.sarBackscatterDampingDb} dB</div>
@@ -278,8 +278,9 @@ export default function InteractiveMap({
           const vesselIcon = L.divIcon({
             className: 'vessel-marker-icon',
             html: `
-              <div class="relative flex items-center justify-center cursor-pointer transform hover:scale-125 transition-transform">
-                <div class="w-8 h-8 rounded-full flex items-center justify-center ${
+              <div class="relative flex items-center justify-center cursor-pointer transform hover:scale-125 transition-transform z-10">
+                ${isTopSuspect ? '<span class="absolute inline-flex h-12 w-12 rounded-full bg-rose-500 opacity-50 animate-ping"></span>' : ''}
+                <div class="w-8 h-8 rounded-full flex items-center justify-center relative ${
                   isSelected ? 'ring-4 ring-sky-500 bg-white shadow-xl' : 'bg-white border border-slate-300 shadow-md'
                 }" style="transform: rotate(${currentPos.course}deg)">
                   <svg class="w-4 h-4" viewBox="0 0 24 24" fill="${markerColor}" stroke="currentColor" stroke-width="1.5">
@@ -288,7 +289,7 @@ export default function InteractiveMap({
                 </div>
                 ${
                   isTopSuspect
-                    ? `<span class="absolute -top-2 -right-2 px-1 py-0.5 bg-rose-600 text-[9px] font-bold text-white rounded-full shadow">🚨 ${attributionInfo.masterScore}%</span>`
+                    ? `<span class="absolute -top-3 -right-3 px-1.5 py-0.5 bg-rose-600 text-[9px] font-bold text-white rounded-full shadow z-20 whitespace-nowrap">🚨 ${attributionInfo.masterScore}%</span>`
                     : ''
                 }
               </div>

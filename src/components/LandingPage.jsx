@@ -38,14 +38,14 @@ export default function LandingPage({ onLaunch }) {
         loop
         muted
         playsInline
-        className="fixed inset-0 z-0 w-full h-[100vh] object-cover pointer-events-none"
+        className="fixed top-0 left-0 z-0 w-screen h-screen object-cover pointer-events-none"
         style={{ filter: "contrast(1.1) saturate(1.2)" }}
       >
         <source src="/tanker_bg.mp4" type="video/mp4" />
       </video>
 
       {/* Dark Overlay for Text Readability */}
-      <div className="fixed inset-0 z-0 h-[100vh] w-full bg-slate-900/40 pointer-events-none" />
+      <div className="fixed top-0 left-0 z-0 h-screen w-screen bg-slate-900/40 pointer-events-none" />
 
       {/* Scroll Animated Line Background */}
       <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden flex justify-center">
@@ -64,9 +64,9 @@ export default function LandingPage({ onLaunch }) {
           </div>
           <div className="hidden md:flex items-center gap-8 text-sm font-semibold text-gray-300">
             <button onClick={onLaunch} className="text-white hover:text-[#0284C7] transition">Launch App</button>
-            <span className="hover:text-white transition cursor-pointer">Technology</span>
-            <span className="hover:text-white transition cursor-pointer">Platform</span>
-            <span className="hover:text-white transition cursor-pointer">About Us</span>
+            <span onClick={() => document.getElementById('technology')?.scrollIntoView({behavior: 'smooth'})} className="hover:text-white transition cursor-pointer">Technology</span>
+            <span onClick={() => document.getElementById('platform')?.scrollIntoView({behavior: 'smooth'})} className="hover:text-white transition cursor-pointer">Platform</span>
+            <span onClick={() => document.getElementById('about')?.scrollIntoView({behavior: 'smooth'})} className="hover:text-white transition cursor-pointer">About Us</span>
           </div>
         </nav>
 
@@ -116,7 +116,7 @@ export default function LandingPage({ onLaunch }) {
               )}
             </AnimatePresence>
           </div>
-          <div className="flex-1 relative flex justify-center md:justify-end">
+          <div id="platform" className="flex-1 relative flex justify-center md:justify-end">
             <div className="w-[400px] h-[500px] rounded-[40px] bg-[#0ea5e9]/10 backdrop-blur-xl border border-[#0ea5e9]/30 shadow-2xl shadow-[#0ea5e9]/10 relative overflow-hidden flex flex-col p-8 z-10">
                <div className="absolute top-10 right-10 w-32 h-32 bg-[#0ea5e9]/30 rounded-full blur-3xl z-0" />
                <div className="absolute bottom-10 left-10 w-40 h-40 bg-[#0284C7]/30 rounded-full blur-3xl z-0" />
@@ -151,7 +151,7 @@ export default function LandingPage({ onLaunch }) {
         </section>
 
         {/* Stats Section */}
-        <section className="bg-white/80 backdrop-blur-md rounded-[32px] p-10 flex flex-col md:flex-row items-center justify-between border border-slate-200 shadow-sm">
+        <section id="about" className="bg-white/80 backdrop-blur-md rounded-[32px] p-10 flex flex-col md:flex-row items-center justify-between border border-slate-200 shadow-sm">
           <div className="flex gap-16">
             <div>
               <p className="text-slate-500 text-sm mb-2 font-mono uppercase font-semibold">Scans</p>
@@ -176,7 +176,7 @@ export default function LandingPage({ onLaunch }) {
         </section>
 
         {/* Features Split Section */}
-        <section className="flex flex-col md:flex-row gap-12 mt-10">
+        <section id="technology" className="flex flex-col md:flex-row gap-12 mt-10">
           <div className="flex-1 grid grid-cols-2 gap-4">
             <div className="h-48 rounded-3xl bg-slate-200 border border-slate-300 overflow-hidden shadow-sm">
               <img src="https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=400&auto=format&fit=crop" className="w-full h-full object-cover" />

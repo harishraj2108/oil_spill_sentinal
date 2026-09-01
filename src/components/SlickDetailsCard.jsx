@@ -1,9 +1,21 @@
 import React from 'react';
 import { Satellite, ShieldCheck, AlertTriangle, Layers, Droplet, Clock, Maximize2 } from 'lucide-react';
 import { getSatelliteMetadata } from '../engine/sarSegmentation';
+import { AreaChart, Area, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
 
 export default function SlickDetailsCard({ slickData, scenarioName }) {
   const satMeta = getSatelliteMetadata(scenarioName);
+
+  // Generate dissipation data for the chart
+  const dissipationData = React.useMemo(() => {
+    const data = [];
+    let vol = slickData.volumeM3 * 1.5; // Start with more volume 24 hours ago
+    for(let i = -24; i <= 0; i += 4) {
+      data.push({ time: i, volume: Math.round(vol) });
+      vol = vol * 0.92; // 8% decay every 4 hours (weathering/evaporation)
+    }
+    return data;
+  }, [slickData.volumeM3]);
 
   return (
     <div className="glass-panel p-4 rounded-xl border border-slate-200 text-xs shadow-md bg-white text-slate-800 flex flex-col space-y-4">
@@ -52,7 +64,7 @@ export default function SlickDetailsCard({ slickData, scenarioName }) {
               <span>Slick Area</span>
             </div>
             <div className="text-base font-bold text-slate-900 font-mono mt-0.5">
-              {slickData.areaKm2} <span className="text-xs font-normal text-slate-500">km²</span>
+              {(slickData.areaKm2 * 0.291553).toFixed(3)} <span className="text-xs font-normal text-slate-500">nm²</span>
             </div>
           </div>
 
@@ -112,6 +124,27 @@ export default function SlickDetailsCard({ slickData, scenarioName }) {
         <div className="flex justify-between text-[9px] text-slate-600 font-mono">
           <span>Petroleum Crude ({Math.round(slickData.mineralOilConfidence * 100)}%)</span>
           <span>Biogenic Sheen ({Math.round((1 - slickData.mineralOilConfidence) * 100)}%)</span>
+        </div>
+      </div>
+
+      {/* Dissipation Chart */}
+      <div className="bg-slate-50 p-2.5 rounded-lg border border-slate-200 space-y-1.5 h-40 flex flex-col">
+        <div className="text-[10px] font-semibold text-slate-700 font-mono">Estimated Weathering & Evaporation (Last 24h)</div>
+        <div className="flex-1 w-full min-h-0">
+          <ResponsiveContainer width="100%" height="100%">
+            <AreaChart data={dissipationData} margin={{ top: 5, right: 0, left: -20, bottom: 0 }}>
+              <defs>
+                <linearGradient id="colorVol" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="5%" stopColor="#b45309" stopOpacity={0.8}/>
+                  <stop offset="95%" stopColor="#b45309" stopOpacity={0}/>
+                </linearGradient>
+              </defs>
+              <XAxis dataKey="time" tick={{fontSize: 9, fill: '#64748b'}} tickFormatter={(v) => v === 0 ? 'Now' : `${v}h`} axisLine={false} tickLine={false} />
+              <YAxis tick={{fontSize: 9, fill: '#64748b'}} axisLine={false} tickLine={false} />
+              <Tooltip contentStyle={{fontSize: '10px', borderRadius: '6px', padding: '4px'}} labelFormatter={(l) => l === 0 ? 'Now' : `${l}h`} formatter={(val) => [`${val} m³`, 'Est. Volume']} />
+              <Area type="monotone" dataKey="volume" stroke="#b45309" strokeWidth={2} fillOpacity={1} fill="url(#colorVol)" />
+            </AreaChart>
+          </ResponsiveContainer>
         </div>
       </div>
     </div>

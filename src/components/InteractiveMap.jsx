@@ -240,7 +240,6 @@ export default function InteractiveMap({
         const isSelected = vessel.id === selectedVesselId;
 
         const trackPoints = vessel.trackHistory.map((pt) => [pt.lat, pt.lng]);
-
         // Draw connected track line
         const trackLineColor = isTopSuspect ? '#DC2626' : isMediumSuspect ? '#D97706' : '#0284C7';
         L.polyline(trackPoints, {

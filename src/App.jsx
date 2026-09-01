@@ -80,7 +80,17 @@ export default function App() {
     
     // Initial welcome toast
     setTimeout(() => {
-      toast.success("Command Center Initialized", {
+      toast.success((t) => (
+        <div className="flex justify-between items-center w-full">
+          <span>Command Center Initialized</span>
+          <button 
+            onClick={() => toast.dismiss(t.id)} 
+            className="ml-3 text-emerald-600 hover:text-emerald-400 text-lg leading-none"
+          >
+            &times;
+          </button>
+        </div>
+      ), {
         style: { background: '#1f2937', color: '#10b981', border: '1px solid #047857' }
       });
     }, 1000);
@@ -94,7 +104,17 @@ export default function App() {
         "🔍 ML Pipeline completed SAR segmentation."
       ];
       const randomMsg = messages[Math.floor(Math.random() * messages.length)];
-      toast(randomMsg, {
+      toast((t) => (
+        <div className="flex justify-between items-center w-full">
+          <span>{randomMsg}</span>
+          <button 
+            onClick={() => toast.dismiss(t.id)} 
+            className="ml-3 text-slate-400 hover:text-white text-lg leading-none"
+          >
+            &times;
+          </button>
+        </div>
+      ), {
         duration: 4000,
         style: {
           background: '#1f2937',

@@ -97,7 +97,7 @@ export const PRESET_SCENARIOS = [
         yearBuilt: 2012,
         destination: 'Shanghai',
         owner: 'Pacific Bulk Shipping',
-        image: 'https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=600&q=80',
+        image: 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=600&q=80',
         trackHistory: [
           { lat: 2.5380, lng: 101.3000, speed: 11.5, course: 122, timestamp: NOW - 18 * 3600 * 1000 },
           { lat: 2.4300, lng: 101.4200, speed: 11.8, course: 120, timestamp: NOW - 15 * 3600 * 1000 },

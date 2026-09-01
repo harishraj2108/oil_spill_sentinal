@@ -265,16 +265,15 @@ export default function App() {
 
   if (isAisDataPage) {
     return (
-      <div className="w-screen h-screen bg-slate-900">
-        <TrajectoryRecorderModal
-          isOpen={true}
-          onClose={() => window.close()}
-          vessels={activeScenario.vessels}
-          isRecording={isPostSpillRecording}
-          onToggleRecording={() => setIsPostSpillRecording(!isPostSpillRecording)}
-          onSelectVesselForSimulation={() => {}}
-        />
-      </div>
+      <TrajectoryRecorderModal
+        isOpen={true}
+        onClose={() => window.close()}
+        vessels={activeScenario.vessels}
+        isRecording={isPostSpillRecording}
+        onToggleRecording={() => setIsPostSpillRecording(!isPostSpillRecording)}
+        onSelectVesselForSimulation={() => {}}
+        fullScreen={true}
+      />
     );
   }
 

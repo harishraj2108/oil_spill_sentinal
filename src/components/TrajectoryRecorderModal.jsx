@@ -8,7 +8,8 @@ export default function TrajectoryRecorderModal({
   vessels,
   isRecording,
   onToggleRecording,
-  onSelectVesselForSimulation
+  onSelectVesselForSimulation,
+  fullScreen = false
 }) {
   if (!isOpen) return null;
 
@@ -51,8 +52,8 @@ export default function TrajectoryRecorderModal({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm font-sans text-xs">
-      <div className="bg-white w-full max-w-5xl max-h-[92vh] rounded-2xl overflow-y-auto border border-sky-400 shadow-2xl flex flex-col text-slate-800">
+    <div className={fullScreen ? "w-screen h-screen bg-slate-50 flex flex-col font-sans text-xs" : "fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm font-sans text-xs"}>
+      <div className={fullScreen ? "bg-white w-full h-full flex flex-col text-slate-800 overflow-y-auto" : "bg-white w-full max-w-5xl max-h-[92vh] rounded-2xl overflow-y-auto border border-sky-400 shadow-2xl flex flex-col text-slate-800"}>
         {/* Header */}
         <div className="p-5 border-b border-slate-200 flex items-center justify-between bg-slate-50 sticky top-0 z-10">
           <div className="flex items-center space-x-3">

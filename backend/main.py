@@ -30,7 +30,7 @@ app.add_middleware(
 # Startup event: Initiate background AISStream WebSocket bridge task
 @app.on_event("startup")
 async def startup_event():
-    print(f"🚀 AquaSentinel AI Python FastAPI Backend starting on http://{HOST}:{PORT}")
+    print(f"AquaSentinel AI Python FastAPI Backend starting on http://{HOST}:{PORT}")
     asyncio.create_task(ais_bridge.connect_to_aisstream())
 
 # Request Models

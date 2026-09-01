@@ -1,5 +1,6 @@
 import React from 'react';
 import { X, Printer, ShieldCheck, FileText, Satellite, Anchor, MapPin, CheckCircle2 } from 'lucide-react';
+import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid, Cell } from 'recharts';
 
 export default function ReportModal({ isOpen, onClose, scenario, slickData, hindcastData, rankedVessels }) {
   if (!isOpen) return null;
@@ -134,6 +135,28 @@ export default function ReportModal({ isOpen, onClose, scenario, slickData, hind
                 </tbody>
               </table>
             </div>
+            
+            {/* Risk Score Chart */}
+            {rankedVessels && rankedVessels.length > 0 && (
+              <div className="mt-4 h-48 w-full bg-slate-50 p-3 rounded-xl border border-slate-200 flex flex-col">
+                <div className="text-[10px] font-semibold text-slate-700 font-mono mb-2">Top 5 Suspects - AI Confidence Scoring</div>
+                <div className="flex-1 w-full min-h-0">
+                  <ResponsiveContainer width="100%" height="100%">
+                    <BarChart data={rankedVessels.slice(0, 5)} layout="vertical" margin={{ top: 0, right: 30, left: 10, bottom: 0 }}>
+                      <CartesianGrid strokeDasharray="3 3" horizontal={false} stroke="#e2e8f0" />
+                      <XAxis type="number" domain={[0, 100]} tick={{fontSize: 10, fill: '#64748b'}} />
+                      <YAxis dataKey="vesselName" type="category" width={110} tick={{fontSize: 9, fill: '#334155', fontWeight: 'bold'}} axisLine={false} tickLine={false} />
+                      <Tooltip contentStyle={{fontSize: '10px', borderRadius: '8px', padding: '6px'}} cursor={{fill: '#f1f5f9'}} formatter={(val) => [`${val}%`, 'Risk Score']} />
+                      <Bar dataKey="masterScore" radius={[0, 4, 4, 0]} barSize={16}>
+                        {rankedVessels.slice(0, 5).map((entry, index) => (
+                          <Cell key={`cell-${index}`} fill={index === 0 ? '#e11d48' : '#0284c7'} />
+                        ))}
+                      </Bar>
+                    </BarChart>
+                  </ResponsiveContainer>
+                </div>
+              </div>
+            )}
           </div>
 
           {/* Culprit Highlight Card */}

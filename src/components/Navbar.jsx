@@ -1,7 +1,8 @@
 import React from 'react';
-import { Waves, Radar, Play, FileText, Sliders, ShieldAlert, Radio, Route } from 'lucide-react';
+import { Waves, Radar, Play, FileText, Sliders, ShieldAlert, Radio, Route, ArrowLeft } from 'lucide-react';
 
 export default function Navbar({
+  onBackToLanding,
   scenarios,
   selectedScenarioId,
   onSelectScenario,
@@ -19,6 +20,13 @@ export default function Navbar({
     <header className="h-16 bg-white/90 border-b border-slate-200 px-4 md:px-6 flex items-center justify-between z-30 relative backdrop-blur-md shadow-sm font-sans">
       {/* Brand & Logo */}
       <div className="flex items-center space-x-3">
+        <button 
+          onClick={onBackToLanding}
+          className="mr-1 p-1.5 text-slate-400 hover:text-sky-600 hover:bg-slate-100 rounded-lg transition-colors flex items-center justify-center"
+          title="Back to Landing Page"
+        >
+          <ArrowLeft className="w-5 h-5" />
+        </button>
         <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-sky-600 via-teal-500 to-emerald-500 p-0.5 shadow-md flex-shrink-0">
           <div className="w-full h-full bg-white rounded-[10px] flex items-center justify-center">
             <Waves className="w-5 h-5 text-sky-600 animate-pulse" />

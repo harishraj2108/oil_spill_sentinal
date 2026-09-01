@@ -49,16 +49,16 @@ export const PRESET_SCENARIOS = [
         image: 'https://images.unsplash.com/photo-1559136555-9303baea8ebd?auto=format&fit=crop&w=600&q=80',
         // Deep Sea Track Points along Malacca Shipping Lane
         trackHistory: [
-          { lat: 2.3100, lng: 101.1800, speed: 14.5, course: 125, timestamp: NOW - 18 * 3600 * 1000 },
-          { lat: 2.3700, lng: 101.2700, speed: 14.1, course: 124, timestamp: NOW - 16 * 3600 * 1000 },
-          { lat: 2.4180, lng: 101.3420, speed: 13.8, course: 122, timestamp: NOW - 14.5 * 3600 * 1000 },
+          { lat: 2.6410, lng: 101.1500, speed: 14.5, course: 125, timestamp: NOW - 18 * 3600 * 1000 },
+          { lat: 2.5510, lng: 101.2500, speed: 14.1, course: 124, timestamp: NOW - 16 * 3600 * 1000 },
+          { lat: 2.4840, lng: 101.3250, speed: 13.8, course: 122, timestamp: NOW - 14.5 * 3600 * 1000 },
           // SPEED DROP & AIS BLACKOUT START NEAR SEA ORIGIN
           { lat: 2.4390, lng: 101.3750, speed: 3.2, course: 120, timestamp: NOW - 13.5 * 3600 * 1000 },
           // AIS BLACKOUT GAP (No signals for 2 hours)
-          { lat: 2.4710, lng: 101.4300, speed: 4.1, course: 118, timestamp: NOW - 11.5 * 3600 * 1000 },
-          { lat: 2.5300, lng: 101.5200, speed: 13.9, course: 121, timestamp: NOW - 9 * 3600 * 1000 },
-          { lat: 2.6100, lng: 101.6400, speed: 14.2, course: 123, timestamp: NOW - 5 * 3600 * 1000 },
-          { lat: 2.6900, lng: 101.7700, speed: 14.4, course: 125, timestamp: NOW }
+          { lat: 2.4160, lng: 101.4000, speed: 4.1, course: 118, timestamp: NOW - 11.5 * 3600 * 1000 },
+          { lat: 2.3040, lng: 101.5250, speed: 13.9, course: 121, timestamp: NOW - 9 * 3600 * 1000 },
+          { lat: 2.1240, lng: 101.7250, speed: 14.2, course: 123, timestamp: NOW - 5 * 3600 * 1000 },
+          { lat: 1.8990, lng: 101.9750, speed: 14.4, course: 125, timestamp: NOW }
         ]
       },
       {
@@ -76,12 +76,12 @@ export const PRESET_SCENARIOS = [
         owner: 'Mediterranean Shipping Co.',
         image: 'https://images.unsplash.com/photo-1518241353330-0f7941c2d9b5?auto=format&fit=crop&w=600&q=80',
         trackHistory: [
-          { lat: 2.3400, lng: 101.1600, speed: 18.2, course: 128, timestamp: NOW - 18 * 3600 * 1000 },
-          { lat: 2.4300, lng: 101.3000, speed: 18.5, course: 127, timestamp: NOW - 15 * 3600 * 1000 },
-          { lat: 2.5200, lng: 101.4400, speed: 18.4, course: 128, timestamp: NOW - 12 * 3600 * 1000 },
-          { lat: 2.6100, lng: 101.5800, speed: 18.1, course: 126, timestamp: NOW - 9 * 3600 * 1000 },
-          { lat: 2.7000, lng: 101.7200, speed: 18.3, course: 127, timestamp: NOW - 6 * 3600 * 1000 },
-          { lat: 2.7900, lng: 101.8600, speed: 18.0, course: 128, timestamp: NOW }
+          { lat: 2.7740, lng: 101.0400, speed: 18.2, course: 128, timestamp: NOW - 18 * 3600 * 1000 },
+          { lat: 2.6120, lng: 101.2200, speed: 18.5, course: 127, timestamp: NOW - 15 * 3600 * 1000 },
+          { lat: 2.4500, lng: 101.4000, speed: 18.4, course: 128, timestamp: NOW - 12 * 3600 * 1000 },
+          { lat: 2.2880, lng: 101.5800, speed: 18.1, course: 126, timestamp: NOW - 9 * 3600 * 1000 },
+          { lat: 2.1260, lng: 101.7600, speed: 18.3, course: 127, timestamp: NOW - 6 * 3600 * 1000 },
+          { lat: 1.8020, lng: 102.1200, speed: 18.0, course: 128, timestamp: NOW }
         ]
       },
       {
@@ -99,11 +99,11 @@ export const PRESET_SCENARIOS = [
         owner: 'Pacific Bulk Shipping',
         image: 'https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=600&q=80',
         trackHistory: [
-          { lat: 2.2800, lng: 101.2100, speed: 11.5, course: 122, timestamp: NOW - 18 * 3600 * 1000 },
-          { lat: 2.3600, lng: 101.3300, speed: 11.8, course: 120, timestamp: NOW - 15 * 3600 * 1000 },
-          { lat: 2.4400, lng: 101.4500, speed: 11.6, course: 121, timestamp: NOW - 12 * 3600 * 1000 },
-          { lat: 2.5200, lng: 101.5700, speed: 11.4, course: 123, timestamp: NOW - 9 * 3600 * 1000 },
-          { lat: 2.6000, lng: 101.6900, speed: 11.7, course: 122, timestamp: NOW }
+          { lat: 2.5380, lng: 101.3000, speed: 11.5, course: 122, timestamp: NOW - 18 * 3600 * 1000 },
+          { lat: 2.4300, lng: 101.4200, speed: 11.8, course: 120, timestamp: NOW - 15 * 3600 * 1000 },
+          { lat: 2.3220, lng: 101.5400, speed: 11.6, course: 121, timestamp: NOW - 12 * 3600 * 1000 },
+          { lat: 2.2140, lng: 101.6600, speed: 11.4, course: 123, timestamp: NOW - 9 * 3600 * 1000 },
+          { lat: 1.8900, lng: 102.0200, speed: 11.7, course: 122, timestamp: NOW }
         ]
       }
     ]
@@ -226,6 +226,146 @@ export const PRESET_SCENARIOS = [
           { lat: 26.2420, lng: 55.1410, speed: 2.9, course: 52, timestamp: NOW - 8.2 * 3600 * 1000 },
           { lat: 26.3100, lng: 55.2300, speed: 14.1, course: 56, timestamp: NOW - 5 * 3600 * 1000 },
           { lat: 26.3800, lng: 55.3200, speed: 14.6, course: 55, timestamp: NOW }
+        ]
+      }
+    ]
+  },
+  {
+    id: 'gulf_of_mexico',
+    title: 'Gulf of Mexico - Rig Blowout',
+    subtitle: 'Expanding crude oil slick near deepwater drilling infrastructure',
+    region: 'Mississippi Canyon (Deepwater)',
+    satelliteMetadata: {
+      satellite: 'Sentinel-1B SAR C-Band',
+      acquisitionTime: NOW - 12 * 3600 * 1000,
+      mode: 'Interferometric Wide (IW)',
+      resolution: '10m',
+      orbit: 'Pass 122 Descending',
+      windSpeedKnots: 15,
+      windDirDeg: 180,
+      currentSpeedKnots: 1.2,
+      currentDirDeg: 90
+    },
+    slickPolygon: [
+      [28.7300, -88.3500],
+      [28.7500, -88.3100],
+      [28.7800, -88.2800],
+      [28.7700, -88.2500],
+      [28.7400, -88.2900],
+      [28.7200, -88.3300]
+    ],
+    opticCode: 4,
+    vessels: [
+      {
+        id: 'vessel_gom_1',
+        name: 'OCEAN VALOR',
+        imo: '9604471',
+        mmsi: '369542000',
+        flag: '🇺🇸 USA',
+        type: 'Offshore Supply Vessel',
+        dwt: 5200,
+        lengthM: 85,
+        beamM: 18,
+        yearBuilt: 2013,
+        destination: 'Port Fourchon',
+        owner: 'Gulf Offshore LLC',
+        image: 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=600&q=80',
+        trackHistory: [
+          { lat: 28.7100, lng: -88.3200, speed: 10.5, course: 320, timestamp: NOW - 12 * 3600 * 1000 },
+          { lat: 28.8000, lng: -88.4500, speed: 10.2, course: 318, timestamp: NOW - 8 * 3600 * 1000 },
+          { lat: 28.9100, lng: -88.6000, speed: 10.6, course: 319, timestamp: NOW - 4 * 3600 * 1000 },
+          { lat: 29.0200, lng: -88.7500, speed: 10.4, course: 320, timestamp: NOW }
+        ]
+      },
+      {
+        id: 'vessel_gom_2',
+        name: 'SEACOR BRAVE',
+        imo: '9424261',
+        mmsi: '367412345',
+        flag: '🇺🇸 USA',
+        type: 'Anchor Handling Tug Supply',
+        dwt: 3100,
+        lengthM: 70,
+        beamM: 15,
+        yearBuilt: 2008,
+        destination: 'MC-252',
+        owner: 'Seacor Marine',
+        image: 'https://images.unsplash.com/photo-1518241353330-0f7941c2d9b5?auto=format&fit=crop&w=600&q=80',
+        trackHistory: [
+          { lat: 28.8500, lng: -88.2000, speed: 11.0, course: 210, timestamp: NOW - 12 * 3600 * 1000 },
+          { lat: 28.8000, lng: -88.2500, speed: 10.8, course: 212, timestamp: NOW - 8 * 3600 * 1000 },
+          { lat: 28.7600, lng: -88.3100, speed: 3.5, course: 220, timestamp: NOW - 4 * 3600 * 1000 },
+          { lat: 28.7400, lng: -88.3600, speed: 2.1, course: 225, timestamp: NOW }
+        ]
+      }
+    ]
+  },
+  {
+    id: 'south_china_sea',
+    title: 'South China Sea - Ship-to-Ship Transfer Leak',
+    subtitle: 'Elongated bunker fuel trail near international maritime boundary',
+    region: 'South China Sea (Spratly Islands Sector)',
+    satelliteMetadata: {
+      satellite: 'Sentinel-1A SAR C-Band',
+      acquisitionTime: NOW - 4 * 3600 * 1000,
+      mode: 'IW Dual-Pol (VV + VH)',
+      resolution: '10m',
+      orbit: 'Pass 044 Ascending',
+      windSpeedKnots: 12,
+      windDirDeg: 45,
+      currentSpeedKnots: 0.8,
+      currentDirDeg: 225
+    },
+    slickPolygon: [
+      [10.5000, 114.2000],
+      [10.4800, 114.1800],
+      [10.4500, 114.1600],
+      [10.4600, 114.1500],
+      [10.4900, 114.1700],
+      [10.5100, 114.1900]
+    ],
+    opticCode: 2,
+    vessels: [
+      {
+        id: 'vessel_scs_1',
+        name: 'PACIFIC HORIZON',
+        imo: '9312345',
+        mmsi: '563000111',
+        flag: '🇸🇬 Singapore',
+        type: 'Oil Products Tanker',
+        dwt: 110000,
+        lengthM: 250,
+        beamM: 44,
+        yearBuilt: 2012,
+        destination: 'Zhoushan',
+        owner: 'Pacific Carriers Ltd',
+        image: 'https://images.unsplash.com/photo-1605634567439-ceceeb0c6536?auto=format&fit=crop&w=600&q=80',
+        trackHistory: [
+          { lat: 10.3500, lng: 114.0500, speed: 13.5, course: 45, timestamp: NOW - 12 * 3600 * 1000 },
+          { lat: 10.4200, lng: 114.1200, speed: 13.8, course: 46, timestamp: NOW - 8 * 3600 * 1000 },
+          { lat: 10.4800, lng: 114.1800, speed: 4.2, course: 45, timestamp: NOW - 4 * 3600 * 1000 },
+          { lat: 10.5500, lng: 114.2500, speed: 13.6, course: 44, timestamp: NOW }
+        ]
+      },
+      {
+        id: 'vessel_scs_2',
+        name: 'LU RONG YU 543',
+        imo: '8877665',
+        mmsi: '412000000',
+        flag: '🇨🇳 China',
+        type: 'Fishing Vessel',
+        dwt: 600,
+        lengthM: 55,
+        beamM: 9,
+        yearBuilt: 2005,
+        destination: 'High Seas',
+        owner: 'Rongcheng Fisheries',
+        image: 'https://images.unsplash.com/photo-1518241353330-0f7941c2d9b5?auto=format&fit=crop&w=600&q=80',
+        trackHistory: [
+          { lat: 10.6000, lng: 114.1000, speed: 6.5, course: 135, timestamp: NOW - 12 * 3600 * 1000 },
+          { lat: 10.5500, lng: 114.1500, speed: 6.2, course: 130, timestamp: NOW - 8 * 3600 * 1000 },
+          { lat: 10.5000, lng: 114.2000, speed: 2.1, course: 90, timestamp: NOW - 4 * 3600 * 1000 },
+          { lat: 10.5000, lng: 114.2500, speed: 6.8, course: 90, timestamp: NOW }
         ]
       }
     ]

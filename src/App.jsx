@@ -260,6 +260,24 @@ export default function App() {
     }
   };
 
+  const urlParams = new URLSearchParams(window.location.search);
+  const isAisDataPage = urlParams.get('page') === 'ais-data';
+
+  if (isAisDataPage) {
+    return (
+      <div className="w-screen h-screen bg-slate-900">
+        <TrajectoryRecorderModal
+          isOpen={true}
+          onClose={() => window.close()}
+          vessels={activeScenario.vessels}
+          isRecording={isPostSpillRecording}
+          onToggleRecording={() => setIsPostSpillRecording(!isPostSpillRecording)}
+          onSelectVesselForSimulation={() => {}}
+        />
+      </div>
+    );
+  }
+
   if (showLanding) {
     return <LandingPage onLaunch={() => setShowLanding(false)} />;
   }

@@ -66,7 +66,6 @@ export default function LandingPage({ onLaunch }) {
             <button onClick={() => window.open('/?page=ais-data', '_blank')} className="text-white hover:text-[#0284C7] transition">AIS data</button>
             <button onClick={onLaunch} className="text-white hover:text-[#0284C7] transition">Launch App</button>
             <span onClick={() => document.getElementById('technology')?.scrollIntoView({behavior: 'smooth'})} className="hover:text-white transition cursor-pointer">Technology</span>
-            <span onClick={() => document.getElementById('platform')?.scrollIntoView({behavior: 'smooth'})} className="hover:text-white transition cursor-pointer">Platform</span>
             <span onClick={() => document.getElementById('about')?.scrollIntoView({behavior: 'smooth'})} className="hover:text-white transition cursor-pointer">About Us</span>
           </div>
         </nav>
